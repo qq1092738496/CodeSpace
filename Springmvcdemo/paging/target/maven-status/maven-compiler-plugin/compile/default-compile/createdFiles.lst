@@ -1,9 +1,0 @@
-com\meditation\service\service.class
-com\meditation\servlet\CRUDServlet.class
-com\meditation\pojo\Page.class
-com\meditation\dao\bookdao.class
-com\meditation\servlet\pagingServlet.class
-com\meditation\pojo\Book.class
-com\meditation\util\pagingFilter.class
-com\meditation\servlet\imageServlet.class
-com\meditation\util\bookListener.class
