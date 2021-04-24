@@ -1,6 +1,8 @@
 *.idea
 /target
 /out
+*.gitignore
+*LICENSE
 
 # Compiled class file
 *.class
