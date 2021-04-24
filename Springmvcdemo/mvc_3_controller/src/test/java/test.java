@@ -26,7 +26,7 @@ public class test {
             }*/
             String[] split = nvshi.getName().split("-");
             String[] split1 = split[1].split("\\W");
-
+            System.out.println("sada阿斯顿撒旦sd");
             System.out.println(nvshi.renameTo(new File(nvshi.getParent() + "\\" + split1[0] + ".jpg")));
         }
     }
