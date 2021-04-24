@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/SunopThread/src/main/java/util/ShotNote.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/jobs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/dao/impl/modifyimpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/runjobs/Combine.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/serlvlet/impl/climb51job.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/serlvlet/impl/climb58.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/service/analysis51job.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/service/analysis58.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/util/jdbc.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/util/mypipeline51job.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/java/com/meditation/util/mypipeline58.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobs/src/main/resources/chromedriver.exe" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/jobs/src/test/java/test.java" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

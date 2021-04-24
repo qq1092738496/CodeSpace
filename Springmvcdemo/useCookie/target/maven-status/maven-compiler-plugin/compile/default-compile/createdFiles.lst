@@ -1,0 +1,4 @@
+com\meditation\service\service.class
+com\meditation\dao\BookDao.class
+com\meditation\servlet\servlet.class
+com\meditation\pojo\Book.class

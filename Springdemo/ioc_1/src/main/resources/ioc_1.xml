@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        ">
+
+    <bean id="userfactoy" class="com.meditation.factory.userfactoy" factory-method="getuser">
+        <constructor-arg name="name" value="张三"></constructor-arg>
+    </bean>
+    <bean id="userfactoy2" class="com.meditation.factory.userfactoy2"></bean>
+    <bean id="user" class="com.meditation.pojo.user" factory-bean="userfactoy2" factory-method="getuser">
+        <constructor-arg name="name" value="王五"></constructor-arg>
+    </bean>
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:dbconfig.properties"/>
+    </bean>-->
+    <!-- <context:property-placeholder location="classpath:dbconfig.properties"/>-->
+    <context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
+    <bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+        <property name="jdbcUrl" value="${jdbcUrl}"></property>
+        <property name="driverClass" value="${driverClass}"></property>
+    </bean>
+</beans>
