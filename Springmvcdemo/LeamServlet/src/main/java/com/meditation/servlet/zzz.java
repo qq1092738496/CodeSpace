@@ -1,4 +1,4 @@
-package com.meditaion.servlet;
+package com.meditation.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

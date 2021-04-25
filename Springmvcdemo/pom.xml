@@ -9,9 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>mvc_1</module>
-        <module>mvc_2_helloword</module>
-        <module>Pagination</module>
         <module>LeamMybatis</module>
         <module>LeamMybatis_2</module>
         <module>useCookie</module>
@@ -19,6 +16,7 @@
         <module>paging</module>
         <module>mvc_2_annotation</module>
         <module>mvc_3_controller</module>
+        <module>ssmpaging</module>
     </modules>
 
     <properties>
@@ -112,22 +110,27 @@
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.xml</include>
                     <include>**/*.properties</include>
+                    <include>**/*.xml</include>
                 </includes>
-                <filtering>false</filtering>
+                <filtering>false</filtering>R
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.xml</include>
                     <include>**/*.properties</include>
+                    <include>**/*.xml</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
