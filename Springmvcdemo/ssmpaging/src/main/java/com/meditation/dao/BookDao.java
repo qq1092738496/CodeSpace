@@ -15,7 +15,9 @@ public interface BookDao {
     public List<Book> limitBook(@Param("Start") Integer Start, @Param("Quanlity") Integer Quanlity);
     public Integer Booksum();
     public Integer addBook(Book book);
-    public Integer delete(@Param("id") Integer id);
+    public Integer delete(Integer id);
     public Integer modify(Book book);
-    public Book CheckBookid(@Param("id") Integer id);
+    public Book CheckBookid(Integer id);
+    public List<Book> LikeBookpage(@Param("BookName")String BookName, @Param("Start") Integer Start,
+                             @Param("Quanlity") Integer Quanlity);
 }

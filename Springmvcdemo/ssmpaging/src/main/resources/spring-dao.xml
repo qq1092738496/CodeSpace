@@ -28,7 +28,7 @@
     <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.meditation.pojo"/>
-        <property name="mapperLocations" value="com/meditation/dao/BookMapper.xml"/>
+        <property name="mapperLocations" value="classpath:com/meditation/dao/BookMapper.xml"/>
     </bean>
 
     <!--配置dao接口扫描包，动态实现了dao接口可以注入到Spring 容器当中-->

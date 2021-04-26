@@ -18,8 +18,8 @@
         (#{BookImage},#{BookName},#{Author},#{intro},#{UpdateTime},#{BookUrl},#{Price},#{Rent});
     </insert>
 
-    <delete id="delete" parameterType="int">
-        delete form book where Id = #{id};
+    <delete id="delete" parameterType="int" >
+        DELETE FROM book WHERE Id = #{id};
     </delete>
 
     <update id="modify" parameterType="Book">
@@ -28,7 +28,10 @@
         BookUrl=#{BookUrl},Price=#{Price},Rent=#{Rent} where id=#{id};
     </update>
 
-    <select id="CheckBookid" resultType="Book" parameterType="id">
+    <select id="CheckBookid" resultType="Book" >
         select * from book where id=#{id};
+    </select>
+    <select id="LikeBookpage" resultType="Book">
+        SELECT * FROM book where BookName LIKE '%${BookName}%' limit #{Start},#{Quanlity};
     </select>
 </mapper>

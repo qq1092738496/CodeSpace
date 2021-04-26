@@ -1,5 +1,7 @@
 import com.meditation.dao.BookDao;
 import com.meditation.pojo.Book;
+import com.meditation.pojo.BookPage;
+import com.meditation.service.BookService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,14 @@ import java.util.List;
 public class test {
     @Autowired
     BookDao bookDao;
+
+    @Autowired
+    BookService bookService;
     @Test
     public void test(){
-        List<Book> books = bookDao.limitBook(1, 5);
-        for (Book book : books) {
+        BookPage bookPage = bookService.BookPaging(1, 3);
+        List<Book> tatolBook = bookPage.getTatolBook();
+        for (Book book : tatolBook) {
             System.out.println(book);
         }
     }

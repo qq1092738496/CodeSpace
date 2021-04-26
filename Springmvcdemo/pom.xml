@@ -17,6 +17,7 @@
         <module>mvc_2_annotation</module>
         <module>mvc_3_controller</module>
         <module>ssmpaging</module>
+        <module>untitled</module>
     </modules>
 
     <properties>
@@ -115,6 +116,11 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.5.2</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>
@@ -124,7 +130,7 @@
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
-                <filtering>false</filtering>R
+                <filtering>false</filtering>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
