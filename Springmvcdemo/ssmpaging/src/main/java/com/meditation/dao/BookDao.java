@@ -20,4 +20,5 @@ public interface BookDao {
     public Book CheckBookid(Integer id);
     public List<Book> LikeBookpage(@Param("BookName")String BookName, @Param("Start") Integer Start,
                              @Param("Quanlity") Integer Quanlity);
+    public Integer LikeBooksum();
 }
