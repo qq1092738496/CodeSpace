@@ -23,101 +23,117 @@
     String Likebook;
 %>
 
-<div class="col-lg-8">
-    <div class="input-group">
-        <form action="/LikeBookPaging/1,<%=bookPage.getQuanlitySize()%>" method="get">
+
+<div class="container">
+
+    <%--搜索--%>
+    <div class="col-md-4">
+        <div class="input-group">
+            <form action="/LikeBookPaging/1,<%=bookPage.getQuanlitySize()%>" method="get">
             <span class="input-group-btn">
             <input type="text" name="BookName" class="form-control" placeholder="Search for...">
             <input class="btn btn-default" type="submit" value="搜索">
                 </span>
-        </form>
-    </div><!-- /input-group -->
-</div>
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-        <li>
-            <a href="/BookPaging"
-               aria-label="Previous">
-                <span aria-hidden="true">主页</span>
-            </a>
-        </li>
-        <li>
-            <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
+            </form>
+        </div>
+        <div/>
+
+
+        <%--每页显示--%>
+        <div class="col-md-3">
+            <form method="get"
+                  action="/BookPaging">
+                每页显示：<select name="options" class="form-control" style="width: 100px">
+                <option>20</option>
+                <option>10</option>
+                <option>5</option>
+                <option>3</option>
+                <option>1</option>
+            </select>
+                <input type="submit" value="确定" class="form-control" style="width: 100px">
+            </form>
+            <%="总页数:" + bookPage.getTatolpage() + "当前页数" + bookPage.getNowPage()%>
+        </div>
+
+
+        <%--上下按钮--%>
+        <div class="col-md-4">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="/BookPaging"
+                           aria-label="Previous">
+                            <span aria-hidden="true">主页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
         "/BookPaging/"+1+","+bookPage.getQuanlitySize() :
             "/LikeBookPaging/"+1+","+bookPage.getQuanlitySize()+"?BookName="+bookPage.getLikeBookName()%>"
-               aria-label="Previous">
-                <span aria-hidden="true">首页</span>
-            </a>
-        </li>
-        <% if (bookPage.getNowPage() - 1 != 0) {%>
-        <li>
-            <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
+                           aria-label="Previous">
+                            <span aria-hidden="true">首页</span>
+                        </a>
+                    </li>
+                    <% if (bookPage.getNowPage() - 1 != 0) {%>
+                    <li>
+                        <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
         "/BookPaging/"+(bookPage.getNowPage()-1)+","+bookPage.getQuanlitySize() :
             "/LikeBookPaging/"+(bookPage.getNowPage()-1)+","+bookPage.getQuanlitySize()+"?BookName="+bookPage.getLikeBookName()%>"
-               aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <%}%>
-        <% if (bookPage.getNowPage() < bookPage.getTatolpage()) {%>
-        <li>
-            <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <%}%>
+                    <% if (bookPage.getNowPage() < bookPage.getTatolpage()) {%>
+                    <li>
+                        <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
         "/BookPaging/"+(bookPage.getNowPage()+1)+","+bookPage.getQuanlitySize() :
             "/LikeBookPaging/"+(bookPage.getNowPage()+1)+","+bookPage.getQuanlitySize()+"?BookName="+bookPage.getLikeBookName()%>"
-               aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-        <% }%>
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <% }%>
 
-        <li>
-            <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
+                    <li>
+                        <a href="<%=Likebook = bookPage.getLikeBookName() == null ?
         "/BookPaging/"+bookPage.getTatolpage()+","+bookPage.getQuanlitySize() :
             "/LikeBookPaging/"+bookPage.getTatolpage()+","+bookPage.getQuanlitySize()+"?BookName="+bookPage.getLikeBookName()%>"
-               aria-label="Previous">
-                <span aria-hidden="true">尾页</span>
-            </a>
-        </li>
+                           aria-label="Previous">
+                            <span aria-hidden="true">尾页</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
 
-    </ul>
-</nav>
-<!-- /.col-lg-6 -->
-<form  method="get"
-      action="/BookPaging">
-    每页显示：<select name="options" class="form-control" style="width: 100px">
-        <option>20</option>
-        <option>10</option>
-        <option>5</option>
-        <option>3</option>
-        <option>1</option>
-    </select>
-    <input type="submit" value="确定" class="form-control" style="width: 100px">
-</form>
 
-<%for (Book book : tatolBook) {%>
-<div class=".col-xs-2">
-    <div class="col-sm-2">
-        <div class="thumbnail">
-            <img src="/image/<%=book.getId()%>" alt="...">
-            <div class="caption">
-                <h3><%=book.getBookName()%>
-                </h3>
-                <P><%=book.getAuthor()%>
-                </P>
-                <p><%=book.getIntro()%>></p>
-                <p><a href="<%=book.getBookUrl()%>" class="btn btn-primary"
-                      role="button">阅读</a> <a href="/delete/<%=book.getId()%>" class="btn btn-default"
-                                              role="button">删除</a></p>
+    <%--数据展示--%>
+    <div class="container">
+
+        <%for (Book book : tatolBook) {%>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="/image/<%=book.getId()%>" alt="...">
+                <div class="caption">
+                    <h3><%=book.getBookName()%>
+                    </h3>
+                    <P><%=book.getAuthor()%>
+                    </P>
+                    <p><%=book.getIntro()%>></p>
+                    <p><a href="<%=book.getBookUrl()%>" class="btn btn-primary"
+                          role="button">阅读</a> <a href="/delete/<%=book.getId()%>" class="btn btn-default"
+                                                  role="button">删除</a></p>
+                </div>
             </div>
         </div>
+
+        <% }%>
     </div>
-</div>
-
-<% }%>
+    </div>
 
 
-<%="总页数:" + bookPage.getTatolpage() + "当前页数" + bookPage.getNowPage()%>
 
 </body>
 </html>
