@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -39,8 +40,9 @@ public class BookController {
     public String BookPaging(Model model,HttpServletRequest request,HttpServletResponse response,String options) {
         BookPage bookPage = bookService.BookPaging(Integer.valueOf("1"), Integer.valueOf("20"));
         model.addAttribute("bookpage", bookPage);
-        if (options !=null){
         GlobalStart = bookPage.getNowPage().toString();
+        GlobalQuanlity = bookPage.getQuanlitySize().toString();
+        if (options !=null){
         GlobalQuanlity =options;
             try {
                 request.getRequestDispatcher("/BookPaging/"+GlobalStart+","+GlobalQuanlity).forward(request,response);
@@ -58,6 +60,7 @@ public class BookController {
         BookPage bookPage = bookService.BookPaging(Integer.valueOf(Start), Integer.valueOf(Quanlity));
         GlobalStart = Start;
         GlobalQuanlity = Quanlity;
+       // System.out.println(GlobalStart+"\n"+GlobalQuanlity);
         model.addAttribute("bookpage", bookPage);
         return "BookPaging";
     }
@@ -80,7 +83,7 @@ public class BookController {
     }
 
     @GetMapping("/image/{id}")
-    public void Image(Model model, @PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
+    public void Image(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("image/png");
         Book book = bookService.CheckBookid(Integer.valueOf(id));
         byte[] bookImage = book.getBookImage();
@@ -106,8 +109,7 @@ public class BookController {
         Integer delete = bookService.delete(Integer.valueOf(id));
         model.addAttribute("delete", delete);
         try {
-            System.out.println(LikeBookName);
-            if (!LikeBookName.equals("null") & LikeBookName != null & !LikeBookName.equals("")) {
+            if (LikeBookName !=null) {
                 request.getRequestDispatcher("/LikeBookPaging/" + GlobalStart + "," + GlobalQuanlity + "?BookName=" + LikeBookName)
                         .forward(request, response);
             } else {

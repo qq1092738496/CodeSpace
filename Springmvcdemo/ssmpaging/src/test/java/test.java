@@ -1,3 +1,4 @@
+import com.meditation.controller.BookController;
 import com.meditation.dao.BookDao;
 import com.meditation.pojo.Book;
 import com.meditation.pojo.BookPage;
@@ -7,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -24,12 +26,11 @@ public class test {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    BookController bookController;
     @Test
     public void test(){
-        BookPage bookPage = bookService.BookPaging(1, 3);
-        List<Book> tatolBook = bookPage.getTatolBook();
-        for (Book book : tatolBook) {
-            System.out.println(book);
-        }
+
     }
 }
