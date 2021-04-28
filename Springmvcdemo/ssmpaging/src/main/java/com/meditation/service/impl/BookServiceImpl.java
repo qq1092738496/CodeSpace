@@ -30,6 +30,7 @@ public class BookServiceImpl implements BookService {
         bookPage.setNowPage(Start);
         bookPage.setTatolData(bookDao.Booksum());
         bookPage.setTatolBook(bookDao.limitBook((Start - 1) * Quanlity, bookPage.getQuanlitySize()));
+        
         return bookPage;
     }
 

@@ -31,10 +31,13 @@
     <select id="CheckBookid" resultType="Book" >
         select * from book where id=#{id};
     </select>
+
     <select id="LikeBookpage" resultType="Book">
         SELECT * FROM book where BookName LIKE concat('%',#{BookName},'%') limit #{Start},#{Quanlity};
     </select>
+
     <select id="LikeBooksum" resultType="int">
         SELECT  count(id)  FROM book where BookName LIKE '%上%' limit 0,5;
     </select>
+
 </mapper>
