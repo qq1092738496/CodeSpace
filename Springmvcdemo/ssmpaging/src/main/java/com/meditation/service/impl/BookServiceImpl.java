@@ -18,6 +18,7 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     public BookDao bookDao;
+    
 
     @Override
     public BookPage BookPaging(Integer Start, Integer Quanlity) {

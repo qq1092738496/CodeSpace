@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="aa">
+        <li v-for="lsit in lists" :key="lists.a">
+            {{lsit}}
+        </li>Spacegray
+    </ul>
+
+    <div></div>
+
+    <!-- View层 -->
+    <div id="app">
+        {{message}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+         new Vue({
+            el: "#aa",
+            
+            // modl层:数据
+            data: {
+                message: "hello word",
+                lists: [
+                    { a:"哈哈哈"},
+                    { b:"呵呵呵"},
+                    { c:"盎司打算啊"},
+                    { d:"阿斯顿盎司"}
+                ]
+            },
+        });
+    </script>
+
+</body>
+
+</html>
