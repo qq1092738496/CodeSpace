@@ -12,6 +12,7 @@
         <module>jobs</module>
         <module>Job51</module>
         <module>SunopThread</module>
+        <module>dataLabel</module>
     </modules>
 
     <dependencies>
@@ -85,11 +86,7 @@
             <artifactId>jsoup</artifactId>
             <version>1.13.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.atmosphere.client</groupId>
-            <artifactId>javascript</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+
     </dependencies>
     <build>
         <plugins>

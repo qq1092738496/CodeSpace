@@ -60,7 +60,6 @@ public class BookController {
         BookPage bookPage = bookService.BookPaging(Integer.valueOf(Start), Integer.valueOf(Quanlity));
         GlobalStart = Start;
         GlobalQuanlity = Quanlity;
-       // System.out.println(GlobalStart+"\n"+GlobalQuanlity);
         model.addAttribute("bookpage", bookPage);
         return "BookPaging";
     }

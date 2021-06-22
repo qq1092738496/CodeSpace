@@ -25,6 +25,8 @@
             <param-value>utf-8</param-value>
         </init-param>
     </filter>
+
+
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>

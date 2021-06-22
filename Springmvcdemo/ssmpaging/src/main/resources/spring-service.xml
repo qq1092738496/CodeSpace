@@ -39,11 +39,14 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
         <aop:pointcut id="myexcution2"
                       expression="execution(public * com.meditation.controller.BookController.* (..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="myexcution"/>
+
         <aop:aspect ref="aspect">
             <!--<aop:before method="begin"
                         pointcut="execution(public * com.meditation.controller.BookController.* (..))"></aop:before>-->
-             <aop:around method="haha" pointcut="execution(public * com.meditation.controller.BookController.* (..))"/>
+            <aop:around method="haha" pointcut="execution(public * com.meditation.controller.BookController.* (..))"/>
         </aop:aspect>
+
+
 
     </aop:config>
 
