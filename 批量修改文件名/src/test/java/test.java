@@ -10,7 +10,7 @@ public class test {
 
     public static void main(String[] args) {
         modify modify = new modify();
-        File file = new File("F:\\Picture\\女士\\女士3-1");
+        File file = new File("F:\\Download\\FL4-1-(jpg)-notext");
         modify.modifyfile(file,"jpg");
     }
 }

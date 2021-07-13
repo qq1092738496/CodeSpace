@@ -19,9 +19,11 @@
     var add = function (i, j, ...rest) {
         console.log(i, j);
         for (let restElement of rest) {
+            console.log(1);
             console.log(restElement);
         }
         return i + j;
+    }
         /*console.log(add(1, 55));*/
 
         /*javascript当中，为了防止，多个js文件相互之间，全局变量覆盖，因此。*/
@@ -103,9 +105,15 @@
 
 
         var wewe = {
-            writable:
+            writable:"sdsd"
         }
-    }
+
+    var ff = {
+        aa: "asdasd",
+        sdsd: "weqe",
+        we: "cxvr"
+    };
+
 
 </script>
 <style>
