@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 @Controller
-public class BookController {
+public class BookController{
 
     @Autowired
     public BookService bookService;

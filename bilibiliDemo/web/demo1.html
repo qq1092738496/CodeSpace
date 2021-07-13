@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    /*ECMAjavaScirit 6 ，可以约束语法*/
+    /*"use scrict"*/
+    "use scrict"
+
+    /*对象数组，需要用{}, 健是字符串，值是各种类型*/
+    let d = {asd: "", asdas: "", ww: ""};
+
+    /*在javascript当中，函数也是一个变量,返回也是变量，两种定义方法*/
+    /*   function add(i,j) {
+           return i+j;
+       }*/
+    var add = function (i, j, ...rest) {
+        console.log(i, j);
+        for (let restElement of rest) {
+            console.log(restElement);
+        }
+        return i + j;
+        /*console.log(add(1, 55));*/
+
+        /*javascript当中，为了防止，多个js文件相互之间，全局变量覆盖，因此。*/
+        //window.alert();
+
+        /*事先定义多个变量，javascript中 之后定义的变量，也会在最上面来定义。赋值，还是按照原来的样子*/
+        var b, c, z, e, f, g;
+
+        /*所有的定义的变量，都储存于window函数中，也就是可以通过window来调用的*/
+        //通过window调用出 alert方法，  重新赋予一个空函数给它，那么window.lert将等于空函数。
+
+        var zhangdan = {};
+        var ord_alert = window.alert;
+        zhangdan.alert = ord_alert;
+
+        function f1() {
+            function f2() {
+                var a = 32;
+            }
+
+            return a;
+
+        }
+
+        //javascript原型, 将指向 user作为原型， xiaoming指向了user原因，实现继承效果；
+
+        /*    var user ={
+                name:"张三",
+                age:"",
+                run:function () {
+                    console.log(this.name+"在跑步。。。")
+                }
+            };
+
+            var xiaoming = {
+              name:"小明"
+            };
+            xiaoming.__proto__=user;*/
+
+        /*ECMAScript6 新的原型写法*/
+        class user {
+            constructor(name) {
+                this.name = name;
+            };
+
+            run() {
+                console.log(this.name + "在跑步");
+            };
+        };
+
+        class xiaouser extends user {
+            fei() {
+                console.log(this.name + "在飞")
+            }
+        }
+
+
+        var xiaoming = new xiaouser("aaaa");
+        //var作用于是从内往外找的， 如果函数内，定义var a 变量，那么函数内即以函数内的变量a为准。 如果没有定义，就是函数内调用函数外部a变量；
+        /*var a = 99;
+        f();
+        console.log(a);
+
+
+        function f() {
+            console.log(a);
+            var a = 10;
+            console.log(a);
+        }*/
+
+        /*通过object创建的对象，可以设置get set writable ，enuerable 可枚举的，configurable，value*/
+        Object.defineProperties(p,{
+            aa:{
+                value:"sdasd",
+                wawawaw:"sadasd",
+                writable:""
+            }
+        });
+
+
+        var wewe = {
+            writable:
+        }
+    }
+
+</script>
+<style>
+    .shipin {
+        width: 30%;
+        height: 60%;
+    }
+</style>
+<body>
+
+
+<video class="shipin" src="章节2课时10零基础学英语拼读天才Lesson 1 习题讲解【www.480032.com】.mp4" controls="a">
+
+</video>
+
+</body>
+</html>

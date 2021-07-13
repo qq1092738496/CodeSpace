@@ -11,19 +11,11 @@
 http://www.springframework.org/schema/mvc/spring-mvc.xsd
     ">
 
-    <context:component-scan base-package="com.meditation.controller"/>
-    <!--静态资源请求映射-->
-    <mvc:default-servlet-handler/>
-   <!-- 处理器映射器
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
-    &lt;!&ndash;处理器适配器&ndash;&gt;
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
-    <mvc:annotation-driven/>
-    <!--视图解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/JSP/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+
+<!--Spring注解扫描器-->
+<context:component-scan base-package="com.guanzizai.controller"/>
+
+<mvc:annotation-driven/>
 
 
 </beans>
