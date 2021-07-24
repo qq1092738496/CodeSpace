@@ -1,69 +1,104 @@
-import java.io.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class FfmpegDemo {
 
-    // FFmpeg全路径
-    private static final String FFMPEG_PATH = "D:\\FFMPEG\\ffmpeg-latest-win64-static\\bin\\ffmpeg.exe";
+
 
     public static void main(String[] args) {
-        try {
-            String videoInputPath = "D:\\ceshi\\demo2.mp4";
-            String audioInputPath = "D:\\ceshi\\说好不哭.mp3";
-            String videoOutPath = "D:\\ceshi\\666\\6啊.avi";
-//            File f = new File("D:\\ceshi\\红色高跟鞋.mp3");
-//            File f2 = new File("D:\\ceshi\\红色高跟鞋3.mp3");
-//            cut(f,f2);
-            convetor(videoInputPath,audioInputPath,videoOutPath);
-            System.out.println("音频合成成功，老铁666");
-        } catch (Exception e) {
-            e.printStackTrace();
+        int i =0 ;
+        while (true){
+            i++;
+            System.out.println(i);
+            try {
+                sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+       /* convetor("F:\\927026377", "F" +
+                ":\\");*/
     }
-    /**
-     * 具体合成视频函数
-     * @param videoInputPath
-     *   原视频的全路径
-     * @param audioInputPath
-     *   音频的全路径
-     * @param videoOutPath
-     *   视频与音频结合之后的视频的路径
-     */
-    public static void convetor(String videoInputPath, String audioInputPath, String videoOutPath)
-            throws Exception {
-        Process process = null;
-        InputStream errorStream = null;
-        InputStreamReader inputStreamReader = null;
-        BufferedReader br = null;
-        try {
-            // ffmpeg命令
-            String command = FFMPEG_PATH + " -i " + videoInputPath +
-                    " -i " + audioInputPath
-                    + " -c:v copy -c:a aac -strict experimental " +
-                    " -map 0:v:0 -map 1:a:0 " +
-                    " -t 15.0"    //生成视频时间为15s
-                    + " -y " + videoOutPath;
+    private static String pathname;
+    private static String name;
 
-            process = Runtime.getRuntime().exec(command);
-            errorStream = process.getErrorStream();
-            inputStreamReader = new InputStreamReader(errorStream);
-            br = new BufferedReader(inputStreamReader);
-            // 用来收集错误信息的
-            String str = "";
-            while ((str = br.readLine()) != null) {
-                System.out.println(str);
+    //ffmpeg -i video.m4s -i audio.m4s -codec copy video1.mp4
+    public static void convetor(String paths, String Outputpath) {
+        File path = new File(paths);
+        File[] files = path.listFiles();
+        File video = null;
+        File audio = null;
+        for (int i = files.length - 1; i >= 0; i--) {
+            System.out.println(files[i]);
+            if (files[i].getName().equals("entry.json")) {
+                try {
+                    BufferedReader reader = new BufferedReader(new FileReader(files[i]));
+                    char[] chars = new char[(int) files[i].length()];
+                    int count = 0;
+                    while ((count = reader.read(chars)) != -1) {
+                    }
+                    reader.close();
+
+                    String entry = String.valueOf(chars);
+                    ObjectMapper mapper = new ObjectMapper();
+                    JsonNode jsonNode = mapper.readTree(entry);
+                    JsonNode page_data = jsonNode.findValue("page_data");
+                    String part = page_data.findValue("part").toString();
+                    pathname = page_data.findValue("page").toString() + "." + part.substring(1, part.length() - 1);
+                    String title = jsonNode.findValue("title").toString();
+                    name = title.substring(1, title.length() - 1);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            process.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                br.close();
+            if (files[i].getName().equals("video.m4s")) {
+                video = files[i];
             }
-            if (inputStreamReader != null) {
-                inputStreamReader.close();
+            if (files[i].getName().equals("audio.m4s")) {
+                audio = files[i];
             }
-            if (errorStream != null) {
-                errorStream.close();
+            if (null != audio & null != video) {
+                if (video.getParent().equals(audio.getParent())) {
+                    String content = "ffmpeg" + " -i " + video.getPath() + " -i " + audio.getPath() +
+                            " -codec " +
+                            "copy "
+                            + Outputpath+ pathname +
+                            ".mp4";
+                    List<String> commands = new ArrayList<>();
+                    commands.add("ffmpeg");
+                    commands.add("-i");
+                    commands.add(video.getPath());
+                    commands.add("-i");
+                    commands.add(audio.getPath());
+                    commands.add("-codec");
+                    commands.add("copy");
+                    commands.add(Outputpath+pathname+".mp4");
+                    //ffmpeg -i video.m4s -i audio.m4s -codec copy video1.mp4
+                    try {
+                        ProcessBuilder processBuilder = new ProcessBuilder();
+                        ProcessBuilder command = processBuilder.command(commands);
+                        Process start = command.start();
+                        sleep(5000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+            if (files[i].isDirectory()) {
+                convetor(files[i].getPath(), Outputpath);
             }
         }
     }

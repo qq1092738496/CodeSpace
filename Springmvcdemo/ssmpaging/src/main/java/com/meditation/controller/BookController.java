@@ -32,9 +32,9 @@ public class BookController{
     @Autowired
     public BookService bookService;
 
-    String GlobalStart;
-    String GlobalQuanlity;
-    String LikeBookName;
+    private String GlobalStart;
+    private String GlobalQuanlity;
+    private String LikeBookName;
 
     @GetMapping("/BookPaging")
     public String BookPaging(Model model,HttpServletRequest request,HttpServletResponse response,String options) {
