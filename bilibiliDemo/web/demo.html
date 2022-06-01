@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    
+    <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
 </head>
 <script>
     var ajax = new XMLHttpRequest();
@@ -17,25 +20,43 @@
 
 </style>
 
-<script>
 
-
-    function aa() {
-        console.log("aaa");
-    }
-    function bb() {
-        console.log("bbb");
-    }
-    aa();
-    bb();
-</script>
 <body>
 
 
-
-<video class="shipin" src="章节2课时10零基础学英语拼读天才Lesson 1 习题讲解【www.480032.com】.mp4"  controls="a">
-
-</video>
-
+<div>
+    <video id="myVideo" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" data-setup='{}' style='width: 60%;height: auto'>
+        <source id="source" src="https://player.bdxzym3u8.com/dplayer/?url=https://qq-qy-yk-mg-bl-1905.jjyl12349.com/20210713/gxeRBzax/index.m3u8" type="application/x-mpegURL"></source>
+    </video>
+</div>
+<div class="qiehuan" style="width:100px;height: 100px;background: red;margin:0 auto;line-height: 100px;color:#fff;text-align: center">切换视频</div>
+<script>
+    // videojs 简单使用
+    var myVideo = videojs('myVideo', {
+        bigPlayButton: true,
+        textTrackDisplay: false,
+        posterImage: false,
+        errorDisplay: false,
+    })
+    myVideo.play()// 视频播放
+    myVideo.pause() // 视频暂停
+    var changeVideo = function (vdoSrc) {
+        if (/\.m3u8$/.test(vdoSrc)) { //判断视频源是否是m3u8的格式
+            myVideo.src({
+                src: vdoSrc,
+                type: 'application/x-mpegURL' //在重新添加视频源的时候需要给新的type的值
+            })
+        } else {
+            myVideo.src(vdoSrc)
+        }
+        myVideo.load();
+        myVideo.play();
+ 
+    }
+    var src = 'https://player.bdxzym3u8.com/dplayer/?url=https://qq-qy-yk-mg-bl-1905.jjyl12349.com/20210713/gxeRBzax/index.m3u8';
+    document.querySelector('.qiehuan').addEventListener('click', function () {
+        changeVideo(src);
+    })
+</script>
 </body>
 </html>

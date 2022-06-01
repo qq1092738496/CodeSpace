@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespbace 指定mapper接口类-->
+<mapper namespace="dao.Videodao">
+    <!--id指定方法名 相当于实现接口该方法  返回类型,再配置文件当中填写路径-->
+    <insert id="addVideo" parameterType="pojo.Video"  >
+        INSERT INTO
+        movie(Video_Name,Cover,Director,Screenwriter,Starring,Introduce,Quality,label,Release_Time,Film_length,play) Values(#{Video_Name},#{Cover},#{Director},#{Screenwriter},#{Starring},#{Introduce},#{Quality},#{label},#{Release_Time},#{Film_length},#{play});
+    </insert>
+    <select id="View_one_Video" resultType="pojo.Video" parameterType="String">
+        SELECT * FROM movie WHERE Video_Name = #{Video_Name};
+    </select>
+    <select id="PlaySelect" resultType="String" parameterType="String">
+        SELECT play FROM movie WHERE Video_Name = #{Video_Name};
+    </select>
+
+
+    <select id="ViewVideo" resultType="pojo.Video">
+        SELECT * FROM movie;
+    </select>
+    <select id="limitVideo" resultType="pojo.Video">
+        SELECT * FROM movie LIMIT #{Start},#{amount};
+    </select>
+
+    <delete id="removeVideo" parameterType="int">
+        delete from movie WHERE id = #{id};
+    </delete>
+    <delete id="removeNmae" parameterType="String">
+        delete from movie WHERE Video_Name = #{Video_Name};
+    </delete>
+
+    <update id="modifyVideo" parameterType="pojo.Video">
+        update movie set
+        Video_Name=#{Video_Name},Cover=#{Cover},Director=#{Director},Screenwriter=#{Screenwriter},Starring=#{Starring},Introduce=#{Introduce},Quality=#{Quality},label=#{label},play=#{play},Film_length=#{Film_length},Release_Time=#{Release_Time}
+        WHERE = id=#{id};
+    </update>
+
+    <select id="Data_Sum" resultType="int">
+        SELECT count(id) FROM movie;<!--此获取方法不可取，计算量太大-->
+    </select>
+
+</mapper>

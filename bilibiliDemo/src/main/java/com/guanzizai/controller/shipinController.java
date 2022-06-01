@@ -16,6 +16,7 @@ public class shipinController{
     @RequestMapping("/hello")
     @ResponseBody
     public String hello(){
+        
         return "aaaaaa";
     };
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="com.xad.util.DruidDataSourceFactory">
+                <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+                <!--设置时区 设置安全连接, 可以使用中文, 设置编码-->
+                <property name="jdbcUrl"
+                          value="jdbc:mysql://localhost:3306/make_friends?serverTimezone=Asia/Shanghai&amp;useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+
+                <!-- 最小闲置数 -->
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/xad/mapper/mapperImpl/userMapperImpl.xml"/>
+        <mapper resource="com/xad/mapper/mapperImpl/newsMapperImpl.xml"/>
+        <mapper resource="com/xad/mapper/mapperImpl/fabulousMapperImpl.xml"/>
+    </mappers>
+</configuration>

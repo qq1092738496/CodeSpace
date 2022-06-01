@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div >
+		sadasdasd<a href="#" id = "sdasd"  onclick="bb(this)">asdasd</a>
+		</div>
+		<textarea id="sadas" name="aa"  ></textarea>
+		<button type="submit" onclick="aa()" id="button">aa</button>
+		<script>
+		
+		function bb(value){
+			
+			var a = value.getAttribute("id");
+			document.getElementById("sadas").placeholder = "回复："+a;
+			
+			/* let xhr = new XMLHttpRequest();
+			
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState ==4){
+					if(xhr.status == 200){
+						alert(xhr.responseTwxt);
+					}
+				}
+			}
+			
+			xhr.open('POST',"http://localhost:8080/api/User_News",false);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			console.log(document.getElementById("sadas").value);
+			xhr.send("aa="+document.getElementById("sadas").value);
+			
+			location.reload(); */
+		}
+		
+		
+		var j = document.getElementById("sadas").value;
+		console.log(j);
+			function aa(){
+				var data = "username=username&aa=aa";
+				let xhr = new XMLHttpRequest();
+				
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState ==4){
+						if(xhr.status == 200){
+							alert(xhr.responseTwxt);
+						}
+					}
+				}
+				
+				xhr.open('POST',"http://localhost:8080/api/User_News",false);
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				console.log(document.getElementById("sadas").value);
+				xhr.send("aa="+document.getElementById("sadas").value);
+				document.getElementById("sadas").value = "";
+				location.reload();
+			}
+			
+		</script>
+	</body>
+</html>

@@ -50,7 +50,7 @@ public class CRUDServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
+        req.setCharacterEncoding("imageutf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=UTF-8");
         WebApplicationContext webApplicationContext =
@@ -59,6 +59,7 @@ public class CRUDServlet extends HttpServlet {
 
         Book book = new Book();
         try {
+            //判断文件表单类型
             boolean multipart = ServletFileUpload.isMultipartContent(req);
             if (multipart) {
                 FileItemFactory factory = new DiskFileItemFactory();

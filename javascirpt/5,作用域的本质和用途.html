@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script> //将自己的代码于其他代码避免冲突，创建一个匿名函数,使其外部不能访问；
+        (function(){
+            var a = 1;
+            var b = 2;
+            function f (){
+                console.log(a);
+            }
+            f();
+            //如果要让外部可以访问，将对应的函数变量赋给 window全局函数, 如果是函数，同时该函数的词法环境与scope都将赋值给window;
+            window.f = f;
+        })()
+        
+        f();
+        
+    </script>
+<body>
+    
+</body>
+</html>

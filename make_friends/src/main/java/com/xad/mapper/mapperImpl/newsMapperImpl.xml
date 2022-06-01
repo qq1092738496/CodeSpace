@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xad.mapper.newsMapper">
+    <insert id="insert" parameterType="com.xad.pojo.News">
+        insert into news (newsNumber,Sort_Id,Sender,Content,Receiver,Or_Read,News_Time)
+        values
+        (#{newsNumber},#{Sort_Id},#{Sender},#{Content},#{Receiver},#{Or_Read},#{News_Time});
+    </insert>
+    <delete id="delete" parameterType="Object">
+        delete from news where newsNumber = #{newsNumber} AND Sort_Id=#{Sort_Id};
+    </delete>
+    <update id="update" parameterType="com.xad.pojo.News">
+        update news set
+        newsNumber=#{newsNumber},Sort_Id=#{Sort_Id},Sender=#{Sender},Content=#{Content},Receiver=#{Receiver},Or_Read=#{Or_Read}
+        where newsNumber=#{newsNumber};
+    </update>
+    <select id="getNews_Number" parameterType="String" resultType="com.xad.pojo.News">
+        SELECT * FROM news WHERE newsNumber=#{newsNumber} ORDER BY Sort_Id DESC ;
+    </select>
+    <select id="getNews_limit" parameterType="Object" resultType="com.xad.pojo.News">
+         SELECT * FROM news WHERE newsNumber=#{newsNumber} ORDER BY Sort_Id DESC LIMIT #{indexes},#{showdata};
+    </select>
+    <select id="getNewsCount" resultType="int">
+        select count(*) from news where newsNumber = #{newsNumber};
+    </select>
+
+</mapper>

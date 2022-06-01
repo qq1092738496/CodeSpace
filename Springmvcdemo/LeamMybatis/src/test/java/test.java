@@ -36,6 +36,7 @@ public class test {
 
         System.out.println(sqlsession);
         bookDao mapper = sqlsession.getMapper(bookDao.class);
+
         List<book> getbook = mapper.getbook();
         for (book book : getbook) {
             System.out.println(book);

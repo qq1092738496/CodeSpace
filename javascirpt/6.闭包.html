@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //在计算机科学中，闭包（closure）是词法闭包（Lexical Closure）的简称，是引用了自由变量的函数。
+        //这个被引用的自由将和这个函数一同存在，即使已经离开了创造它的环境也不例外。
+        //所以，有另外一种说法认为闭包是自由函数和与其他相关的引用环境组合而成的实体。
+
+        
+        // function f (){
+        //     var a = 1;//自由变量
+        //     var b = 2;//自由变量
+        //     function f2 (){ //引用自由变量的函数;
+        //         console.log(a); 
+        //     }
+        //     f2();
+        // }
+        // f();
+        
+         function f (){
+            var a = 1;//自由变量
+            var b = 2;//自由变量
+            function f2 (){ // 引用自由变量的函数
+                console.log(b); 
+            }
+            window.f2 = f2 //return 或 提升作用域，都说是脱离创造它的环境;
+        }
+        f();
+        window.f2();
+
+    </script>
+    
+</body>
+</html>

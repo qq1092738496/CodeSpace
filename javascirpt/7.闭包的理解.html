@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="1">1</div>
+    <div id="2">2</div>
+    <div id="3">3</div>
+</body>
+<script>
+    
+    //     for(var i = 1; i<=3; i++){
+    //     var ele = document.getElementById(i);
+    //     ele.onclick=(function(id){  // ()(i) 由id接收,这样的传参方式,  
+    //         return function(){alert(id)};
+    //     }
+    //     )(i);
+    // }
+        var arr = [];
+        for(var i = 0 ; i < 10;i++){
+            arr[i] = i;
+        }
+
+        arr[1];
+
+   
+    
+
+        //函数立即执行,分为声明式函数,表示式函数,匿名函数;匿名函数:(代码)(参数),;
+    //     var i ;
+    // for(i = 1;i<=3; i++){
+    //     var ele = document.getElementById(i);
+    //     var f = function(id){return function(){alert(id)}}(i);
+    //     ele.onclick = f;
+    // }
+
+        //let 只在代码块中有效,scope中block代表的其中的值,与var最不同的地方是,for循环的时候,每次循环都会产生一个新的代码块,所以funcition的scope中的值各不相同;
+    // for(let i = 1;i<=3;i++){
+    //     var ele = document.getElementById(i);
+    //     ele.onclick = function(){alert(i)};
+    // }
+ </script>
+</html>

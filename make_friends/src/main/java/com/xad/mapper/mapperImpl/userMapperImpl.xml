@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xad.mapper.userMapper">
+    <select id="select" resultType="com.xad.pojo.User">
+    select * from user ;
+    </select>
+    <insert id="insert" parameterType="com.xad.pojo.User">
+        insert into user
+        (userNumber,userName,passWord,Name,Mailbox,Telephone,WeChat,nickName,Photo,Gander,Hobby,Height,Weight,Age,Location,Marriage,Occupation,Registration_Time,Brief_Introduction)
+        Values(#{userNumber},#{userName},#{passWord},#{Name},#{Mailbox},#{Telephone},#{WeChat},#{nickName},#{Photo},#{Gander},#{Hobby},#{Height},#{Weight},#{Age},#{Location},#{Marriage},#{Occupation},#{Registration_Time},#{Brief_Introduction});
+    </insert>
+    <delete id="delete" parameterType="String">
+        delete from user where userNumber = #{userNumber}
+    </delete>
+    <update id="update" parameterType="com.xad.pojo.User">
+        update user set
+        userNumber=#{userNumber},userName=#{userName},passWord=#{passWord},Name=#{Name},Mailbox=#{Mailbox},Telephone=#{Telephone},WeChat=#{WeChat},nickName=#{nickName},Photo=#{Photo},Gander=#{Gander},Hobby=#{Hobby},Height=#{Height},Weight=#{Weight},Age=#{Age},Location=#{Location},Marriage=#{Marriage},Occupation=#{Occupation},Brief_Introduction=#{Brief_Introduction}
+        where userNumber=#{userNumber}
+    </update>
+    <select id="getUser" parameterType="String" resultType="com.xad.pojo.User">
+        select * from user where userName=#{userName};
+    </select>
+
+    <select id="getUser_limit" parameterType="Object" resultType="com.xad.pojo.User">
+        select * from user WHERE userName != #{userName} LIMIT #{indexes},#{showdata};
+    </select>
+    <select id="getUserCount" resultType="int">
+        select count(*) from user ;
+    </select>
+
+    <select id="likeUser" parameterType="Object" resultType="com.xad.pojo.User">
+        SELECT * FROM user WHERE userName LIKE concat('%',#{userName},'%') LIMIT #{indexes},#{showdata};
+    </select>
+
+    <select id="likeUserCount" parameterType="Object" resultType="int">
+        SELECT count(*) FROM user WHERE userName LIKE concat('%',#{userName},'%') LIMIT #{indexes},#{showdata};
+    </select>
+</mapper>

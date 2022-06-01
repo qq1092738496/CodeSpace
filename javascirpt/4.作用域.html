@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <script>
+   console.log(a);
+   console.log(b);
+//    console.log(c);
+//    console.log(d);
+    var a = 1;
+    if(false){
+        var b = 2;
+    }else{
+        c = 3;
+    }
+    function f (){
+        var d = 4;
+    }
+    
+    console.log(i)
+    for(var i = 0; i < 3; i++){
+
+    }
+</script> -->
+<!-- <script>
+function f (){
+    alert(a);
+}
+
+function q(){
+    var a = 10;
+    f();
+}
+q();
+</script> -->
+<!-- <script>
+    console.log(f);
+    var f = function x (){
+        alert("ssss");
+    }
+</script> -->
+<script> //函数写在函数体外面,scope是window,写在函数里面scope是函数;
+// 声明式函数,预处理时,就已经赋值.  变量方式的函数,必须等带代码运行到该行才能赋值;
+     function f (){
+         var a = "123";
+         z();
+         function z (){
+             console.log(a);
+            }
+         var Fs = new Function("","alert(a)");
+         Fs();
+     }
+     f();
+
+    
+
+</script>
+<body>
+    
+</body>
+</html>

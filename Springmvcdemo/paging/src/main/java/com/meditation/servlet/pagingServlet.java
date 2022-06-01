@@ -41,7 +41,7 @@ public class pagingServlet extends HttpServlet {
        // Integer thispage = 1;
         Integer pagesize = 18;
         Integer thispage = Integer.valueOf(req.getParameter("thispage"));
-        /*if (respthispage != null){
+        /*if (thispage != null){
             thispage = Integer.valueOf(respthispage);
         }*/
         Integer sunbook = service.getsumbook();
