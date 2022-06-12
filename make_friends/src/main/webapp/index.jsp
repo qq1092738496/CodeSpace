@@ -117,7 +117,7 @@
                 </div>
                 <div>
                     个人简介：<textarea id="<%=
-                    user.getUserName()%> <%--<%=a %>--%>"><%=user.getBrief_Introduction()%>
+                    user.getUserName()%> <%--<%=a %>--%>    "><%=user.getBrief_Introduction()%>
                 </textarea>
                     <%--<% if (jurisdiction) {
                         out.print("<button onclick=\"updata("+user.getUserName()+")\">修改</button>");
