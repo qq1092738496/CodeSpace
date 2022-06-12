@@ -13,10 +13,10 @@ import pojo.user;
 public class businessImpl implements business {
     userDao userDao = new userDaoImpl();
 
+    
     //登入
     @Override
     public int Login(String userName, String password) {
-
         user user = userDao.getuser(userName);
         if (null != user.getUserName()) {
             if (user.getPassWord().equals(password)) {
@@ -33,6 +33,7 @@ public class businessImpl implements business {
         if (user.getUserName() != null & user.getMailbox().equals(mailbox)) {
             user.setPassWord(password);
             userDao.update(user);
+            
             return 1;
         }
         return 0;
